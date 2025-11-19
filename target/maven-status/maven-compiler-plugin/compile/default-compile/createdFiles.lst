@@ -1,0 +1,5 @@
+com/sistema/automotivo/AutomotivoApplication.class
+com/sistema/automotivo/service/VeiculoService.class
+com/sistema/automotivo/repository/VeiculoRepository.class
+com/sistema/automotivo/model/Veiculo.class
+com/sistema/automotivo/controller/VeiculoController.class
