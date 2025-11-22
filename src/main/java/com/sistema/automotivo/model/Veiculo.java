@@ -1,6 +1,6 @@
 package com.sistema.automotivo.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Veiculo {
@@ -11,45 +11,56 @@ public class Veiculo {
 
     private String marca;
     private String modelo;
-    private Integer ano;
-    private String cor;
-    private Integer quilometragem;
-    private Double preco;
-    private String status;
+    private int ano;
+    private double preco;
 
     public Veiculo() {}
 
-    // GETTERS E SETTERS
+    public Veiculo(Long id, String marca, String modelo, int ano, double preco) {
+        this.id = id;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.preco = preco;
+    }
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getMarca() { return marca; }
+    public String getMarca() {
+        return marca;
+    }
 
-    public void setMarca(String marca) { this.marca = marca; }
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
-    public String getModelo() { return modelo; }
+    public String getModelo() {
+        return modelo;
+    }
 
-    public void setModelo(String modelo) { this.modelo = modelo; }
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
-    public Integer getAno() { return ano; }
+    public int getAno() {
+        return ano;
+    }
 
-    public void setAno(Integer ano) { this.ano = ano; }
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
 
-    public String getCor() { return cor; }
+    public double getPreco() {
+        return preco;
+    }
 
-    public void setCor(String cor) { this.cor = cor; }
-
-    public Integer getQuilometragem() { return quilometragem; }
-
-    public void setQuilometragem(Integer quilometragem) { this.quilometragem = quilometragem; }
-
-    public Double getPreco() { return preco; }
-
-    public void setPreco(Double preco) { this.preco = preco; }
-
-    public String getStatus() { return status; }
-
-    public void setStatus(String status) { this.status = status; }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 }

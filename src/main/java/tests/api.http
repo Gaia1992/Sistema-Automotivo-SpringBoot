@@ -1,0 +1,13 @@
+POST http://localhost:8080/veiculos
+Content-Type: application/json
+
+{
+  "marca": "Fiat",
+  "modelo": "Argo",
+  "ano": 2021,
+  "cor": "Vermelho",
+  "quilometragem": 30000,
+  "status": "Disponível",
+  "preco": 55000
+}
+

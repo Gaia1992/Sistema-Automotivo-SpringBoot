@@ -2,7 +2,6 @@ package com.sistema.automotivo.service;
 
 import com.sistema.automotivo.model.Veiculo;
 import com.sistema.automotivo.repository.VeiculoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,32 +9,38 @@ import java.util.List;
 @Service
 public class VeiculoService {
 
-    @Autowired
-    private VeiculoRepository repository;
+    private final VeiculoRepository repository;
 
-    public List<Veiculo> listar() {
+    public VeiculoService(VeiculoRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<Veiculo> listarTodos() {
         return repository.findAll();
+    }
+    public List<Veiculo> listar() {
+    return listarTodos();
+    }
+
+    public Veiculo salvar(Veiculo v) {
+        return repository.save(v);
     }
 
     public Veiculo buscarPorId(Long id) {
         return repository.findById(id).orElse(null);
     }
 
-    public Veiculo salvar(Veiculo veiculo) {
-        return repository.save(veiculo);
-    }
-
     public Veiculo atualizar(Long id, Veiculo dados) {
-        return repository.findById(id).map(v -> {
-            v.setMarca(dados.getMarca());
-            v.setModelo(dados.getModelo());
-            v.setAno(dados.getAno());
-            v.setCor(dados.getCor());
-            v.setQuilometragem(dados.getQuilometragem());
-            v.setPreco(dados.getPreco());
-            v.setStatus(dados.getStatus());
-            return repository.save(v);
-        }).orElse(null);
+        Veiculo existente = buscarPorId(id);
+
+        if (existente == null) return null;
+
+        existente.setMarca(dados.getMarca());
+        existente.setModelo(dados.getModelo());
+        existente.setAno(dados.getAno());
+        existente.setPreco(dados.getPreco());
+
+        return repository.save(existente);
     }
 
     public void deletar(Long id) {
